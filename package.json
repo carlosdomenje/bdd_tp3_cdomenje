@@ -1,0 +1,20 @@
+{
+  "name": "lista_bdd_tp3",
+  "version": "1.0.0",
+  "description": "Trabajo practico 3 - Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --publish-quiet",
+    "coverage": "nyc --reporter=html cucumber-js --publish-quiet"
+  },
+  "nyc": {
+    "exclude": "features/**" 
+  },
+  "author": "Carlos Domenje",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^7.0.0-rc.0",
+    "chai": "^4.2.0",
+    "nyc": "^15.1.0"
+  }
+}
