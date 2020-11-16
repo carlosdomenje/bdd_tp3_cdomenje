@@ -10,6 +10,7 @@
 # (Gestion) v  Cuando se agrega un elemento a una lista vacia, la lista de claves esta ordenada.
 # (Gestion) *  Cuando se agrega un elemento al principio la lista de claves esta ordenada.
 # (Gestion) *  Cuando se agrega un elemento al final la lista de claves esta ordenada.
+# (Busqueda) *  Se puede borrar una pareja a partir de la clave.
 
 
 Característica: Gestionar las parejas almacenadas en la lista

@@ -1,5 +1,6 @@
 const {Before, Given, When, Then} = require('@cucumber/cucumber');
 const expect = require('chai').expect;
+const assert = require('chai').assert;
 
 const Lista = require('../../src/lista');
 
@@ -81,4 +82,15 @@ When('se agrega un elemento al final', function () {
 
 Then('la lista esta ordenada con el agregado al final', function () {
     expect(ctx.lista.sortedList()[ctx.lista.count()-1]).to.equal('prueba3');
+});
+
+
+When('se quiere borrar un elemento se pasa una clave', function (dataTable) {
+    let elementos = dataTable.rows();
+    console.log('datos a borrar : ', elementos[0][0]);
+    ctx.lista.eraseItem(elementos[0][0]);
+});
+
+Then('se busca el elemento y se lo borra', function () {
+   assert.notExists(ctx.lista.findByKey('prueba'),'No se encuentra el elemento')
 });
