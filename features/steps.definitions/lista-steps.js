@@ -26,42 +26,59 @@ When('se agrega la pareja', function (data) {
   });
 
 
-Then('la lista tiene un elemento almacenado.', function () {
+Then('la lista tiene un elemento almacenado', function () {
     expect(ctx.lista.count()).to.equal(1);
 });
 
-/* Given('una lista vacia', function () {
-    ctx.lista = new Lista();
-    return ctx.lista;
-});
 
-When('se agrega la pareja \{}', function (elemento) {
-    
-    ctx.lista.add(elemento.clave, elemento.valor);
+Then('se puede recuperar su valor a partir de la clave', function () {
+    expect(ctx.lista.findByKey('prueba')).to.equal('1');
+  });
 
-});
 
-Then('la lista tiene un elemento almacenado.', function () {
-    var count = ctx.lista.count();
-    return count;
-});
-
-Given('una lista vacia con los siguientes elementos', function (dataTable) {
-    dataTable.rawTable.forEach((element) =>{
-        ctx.lista.add('elemento', element[0], element[1]);
+When('se agrega un elemento', function (dataTable) {
+    let elementos = dataTable.rows();
+    elementos.forEach(function(item,index){
+        ctx.lista.add(item[0], item[1]);
     })
-    
+    ctx.lista.sortedList();
 });
 
-When('se agrega la pareja \{}', function (elemento) {
-    console.log('datos: ', elemento);
-    ctx.lista.add(elemento.clave, elemento.valor);
-
+Then('la lista de claves esta ordenada', function () {
+    expect(ctx.lista.sortedList()[0]).to.equal('a_prueba4');
 });
 
-Then('la lista tiene dos elemento almacenado.', function () {
-    
-    return 'pending';
+
+Given('una lista', function (dataTable) {
+    ctx.lista = new Lista();
+    let elementos = dataTable.rows();
+    elementos.forEach(function(item,index){
+        console.log('claves: ', item[0]);
+        console.log('valor: ', item[1]);
+        ctx.lista.add(item[0], item[1]);
+    })
 });
 
- */
+When('se agrega una clave existente', function (data) {
+    let elementos = data.rows();
+    ctx.lista.add(elementos[0][0], elementos[0][1])
+    console.log('datos: ', elementos[0][1]);
+});
+
+Then('se actualiza el valor correspondiente', function () {
+    expect(ctx.lista.findByKey('prueba2')).to.equal('otro');
+});
+
+When('se agrega un elemento al principio', function () {
+});
+
+Then('la lista esta ordenada con el agregado al principio', function () {
+    expect(ctx.lista.sortedList()[0]).to.equal('al_final');
+  });
+
+When('se agrega un elemento al final', function () {
+});
+
+Then('la lista esta ordenada con el agregado al final', function () {
+    expect(ctx.lista.sortedList()[ctx.lista.count()-1]).to.equal('prueba3');
+});
