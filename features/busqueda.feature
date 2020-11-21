@@ -17,7 +17,7 @@
 Característica: Buscar por listas ordenadas teniendo en cuenta el agregado de elementos.
 
     
-Escenario: Agregar una clave existente
+Escenario: Agregar clave existente y actualizar valor
     Dado una lista 
     | clave | valor |
     | prueba | 1 |
@@ -28,7 +28,7 @@ Escenario: Agregar una clave existente
     | prueba2 | otro |
     Entonces se actualiza el valor correspondiente
 
-Escenario: Agregar una clave existente
+Escenario: Agregar una clave al principio y devolverla ordenada
     Dado una lista 
     | clave | valor |
     | en_ppio | 0 |
@@ -39,7 +39,7 @@ Escenario: Agregar una clave existente
     Cuando se agrega un elemento al principio 
     Entonces la lista esta ordenada con el agregado al principio
 
-Escenario: Agregar una clave existente
+Escenario: Agregar una clave al final y devolverla ordenada
     Dado una lista 
     | clave | valor |
     | en_ppio | 0 |

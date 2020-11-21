@@ -15,11 +15,11 @@
 
 Característica: Gestionar las parejas almacenadas en la lista
 
-Escenario: Verificar lista vacia
+Escenario: Verificar lista sin elementos 
     Dado una lista vacia
     Entonces la lista tiene cero elementos.
 
-Escenario: Verificar lista vacia
+Escenario: Verificar que no se encuentren claves en una lista vacia
     Dado una lista vacia
     Entonces no se encuentra ninguna clave.
 
@@ -31,16 +31,16 @@ Escenario: Agregrar un elemento a una lista vacia
     | clave | valor |
     Entonces la lista tiene un elemento almacenado
     
-Escenario: Agregrar un elemento a una lista vacia
+Escenario: Agregrar un elemento y recuperar su valor 
     Dado una lista vacia
     Cuando se agrega la pareja
     | clave | valor |
     | prueba | 1 |
     Entonces se puede recuperar su valor a partir de la clave
 
-Escenario: Agregrar un elemento a una lista vacia
+Escenario: Agregrar varios elementos a una lista vacia
     Dado una lista vacia
-    Cuando se agrega un elemento
+    Cuando se agregan 4 elementos
     | clave | valor |
     | prueba | 1 |
     | prueba2 | 2 |

@@ -12,12 +12,12 @@ Given('una lista vacia', function () {
 });
 
 Then('la lista tiene cero elementos.', function () {   
-    expect(ctx.lista.find()).to.equal(0);
+    expect(ctx.lista.count()).to.equal(0);
 });
 
 
 Then('no se encuentra ninguna clave.', function () {
-    expect(ctx.lista.find()).to.equal(0);
+    expect(ctx.lista.count()).to.equal(0);
 });
 
 When('se agrega la pareja', function (data) {
@@ -37,7 +37,7 @@ Then('se puede recuperar su valor a partir de la clave', function () {
   });
 
 
-When('se agrega un elemento', function (dataTable) {
+When('se agregan 4 elementos', function (dataTable) {
     let elementos = dataTable.rows();
     elementos.forEach(function(item,index){
         ctx.lista.add(item[0], item[1]);
