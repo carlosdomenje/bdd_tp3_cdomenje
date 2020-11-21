@@ -70,19 +70,14 @@ Then('se actualiza el valor correspondiente', function () {
     expect(ctx.lista.findByKey('prueba2')).to.equal('otro');
 });
 
-When('se agrega un elemento al principio', function () {
+When('se agrega un elemento', function () {
+    ctx.lista.add('A_nuevo', 'valor')
 });
 
-Then('la lista esta ordenada con el agregado al principio', function () {
-    expect(ctx.lista.sortedList()[0]).to.equal('al_final');
+Then('la lista de claves esta ordenada incluyendo el elemento agregado', function () {
+    //expect(ctx.lista.sortedList()[0]).to.equal('al_final');
+    assert.deepEqual(ctx.lista.sortedList(),["A_nuevo", "en_ppio", "final", "prueba", "prueba2", "prueba3" ])
   });
-
-When('se agrega un elemento al final', function () {
-});
-
-Then('la lista esta ordenada con el agregado al final', function () {
-    expect(ctx.lista.sortedList()[ctx.lista.count()-1]).to.equal('prueba3');
-});
 
 
 When('se quiere borrar un elemento se pasa una clave', function (dataTable) {

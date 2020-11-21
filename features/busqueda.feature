@@ -28,27 +28,16 @@ Escenario: Agregar clave existente y actualizar valor
     | prueba2 | otro |
     Entonces se actualiza el valor correspondiente
 
-Escenario: Agregar una clave al principio y devolverla ordenada
+Escenario: Agregar un elemento y devolver una lista de claves ordenada
     Dado una lista 
     | clave | valor |
     | en_ppio | 0 |
     | prueba | 1 |
     | prueba2 | 2 |
     | prueba3 | 3 |
-    | al_final| 4 |
-    Cuando se agrega un elemento al principio 
-    Entonces la lista esta ordenada con el agregado al principio
-
-Escenario: Agregar una clave al final y devolverla ordenada
-    Dado una lista 
-    | clave | valor |
-    | en_ppio | 0 |
-    | prueba | 1 |
-    | prueba2 | 2 |
-    | prueba3 | 3 |
-    | al_final| 4 |
-    Cuando se agrega un elemento al final
-    Entonces la lista esta ordenada con el agregado al final
+    | final| 4 |
+    Cuando se agrega un elemento
+    Entonces la lista de claves esta ordenada incluyendo el elemento agregado
 
 Escenario: Borrar un elemento de la lista
     Dado una lista 
