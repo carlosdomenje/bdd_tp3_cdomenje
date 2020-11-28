@@ -18,36 +18,32 @@ Característica: Buscar por listas ordenadas teniendo en cuenta el agregado de e
 
     
 Escenario: Agregar clave existente y actualizar valor
-    Dado una lista 
+    Dado una lista con 3 elementos 
     | clave | valor |
     | prueba | 1 |
     | prueba2 | 2 |
     | prueba3 | 3 |
-    Cuando se agrega una clave existente
-    | clave | valor |
-    | prueba2 | otro |
-    Entonces se actualiza el valor correspondiente
+    Cuando se agrega el elemento con clave 'prueba' y valor 5
+    Y la clave 'prueba' ya existe la lista
+    Entonces se actualiza el valor del elemento a 'prueba', 5
 
 Escenario: Agregar un elemento y devolver una lista de claves ordenada
-    Dado una lista 
+    Dado una lista con 5 elementos
     | clave | valor |
-    | en_ppio | 0 |
     | prueba | 1 |
     | prueba2 | 2 |
     | prueba3 | 3 |
-    | final| 4 |
-    Cuando se agrega un elemento
-    Entonces la lista de claves esta ordenada incluyendo el elemento agregado
+    | prueba4 | 4 |
+    | prueba5 | 5 |
+    Cuando se agrega el elemento con clave 'alComienzo' y valor 10
+    Entonces se retorna la lista de claves ordenada
 
 Escenario: Borrar un elemento de la lista
-    Dado una lista 
+    Dado una lista con 4 elementos
     | clave | valor |
-    | en_ppio | 0 |
     | prueba | 1 |
     | prueba2 | 2 |
     | prueba3 | 3 |
-    | al_final| 4 |
-    Cuando se quiere borrar un elemento se pasa una clave
-    | clave |
-    | prueba |
-    Entonces se busca el elemento y se lo borra
+    | prueba4 | 4 |
+    Cuando se borra el elemento con clave 'prueba' 
+    Entonces la clave 'prueba' no se encuentra en la lista

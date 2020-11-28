@@ -23,20 +23,18 @@ Escenario: Verificar que no se encuentren claves en una lista vacia
     Dado una lista vacia
     Entonces no se encuentra ninguna clave.
 
-
+# Se lo refactoriza para que se comprenda mejor la prueba.
 Escenario: Agregrar un elemento a una lista vacia
     Dado una lista vacia
-    Cuando se agrega la pareja
-    | clave | valor |
-    | clave | valor |
+    Cuando se agrega la clave 'prueba' con el valor 1
+    Y se busca la cantidad de elementos en la lista
     Entonces la lista tiene un elemento almacenado
     
 Escenario: Agregrar un elemento y recuperar su valor 
     Dado una lista vacia
-    Cuando se agrega la pareja
-    | clave | valor |
-    | prueba | 1 |
-    Entonces se puede recuperar su valor a partir de la clave
+    Cuando se agrega el elemento con clave 'test' y valor 2
+    Y se realiza una busqueda por su clave 'test'
+    Entonces su valor es igual a 2
 
 Escenario: Agregrar varios elementos a una lista vacia
     Dado una lista vacia
@@ -46,5 +44,6 @@ Escenario: Agregrar varios elementos a una lista vacia
     | prueba2 | 2 |
     | prueba3 | 3 |
     | a_prueba4 | 4 |
+    Y se recupera la lista de claves
     Entonces la lista de claves esta ordenada
 

@@ -21,14 +21,7 @@ module.exports = class Lista {
         })
         return element;
     }
-    /* Busca en el array por posicion del mismo mientras no sea 0 la cantidad 
-    de elementos */
-    /* find(position) {
-        if (this.#elementos.length != 0) {
-            return this.#elementos[position].valor;
-        }
-        return 0;
-    } */
+    
     /* Agrega un nuevo par clave - valor, teniendo en cuenta que no exista una clave
      Ademas cumple con el requisito de ser unica ya que si se agrega una igual a una clave
      existente modificara su valor y no se agregara dos veces.
