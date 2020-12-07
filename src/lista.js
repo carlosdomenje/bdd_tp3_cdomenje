@@ -11,34 +11,41 @@ module.exports = class Lista {
     count() {
         return this.#elementos.length;
     }
-    /* Busca un valor por clave */
-    findByKey(key){
-        var element;
+     /* Busca por clave  y devuelve el inidice*/
+     find(key){
+        var position = NaN;
         this.#elementos.forEach(function(elemento, indice){
             if (elemento.clave == key){
-                element = elemento.valor;
+                position = indice;
+                
             }
         })
-        return element;
+        
+        return position;
+    }
+
+    getValue(key){
+        var pos = this.find(key);
+        if (pos >= 0){
+            return (this.#elementos[pos].valor);
+        }else{
+            return undefined;
+        }
     }
     
     /* Agrega un nuevo par clave - valor, teniendo en cuenta que no exista una clave
      Ademas cumple con el requisito de ser unica ya que si se agrega una igual a una clave
      existente modificara su valor y no se agregara dos veces.
     */
-    add(clave, valor) {
-        var key = this.findByKey(clave);
+   add(clave, valor) {
+        var key = this.find(clave);
         /*  Me aseguro que sea un string la clave */
         if (typeof(clave) != 'string' )
         {
             return NaN;
         }
-        if (key != null){
-            this.#elementos.forEach(function(element, indice){
-                if (element.clave == clave){
-                    element.valor = valor;                 
-                }
-            })
+        if (key >= 0 ){
+            this.#elementos[key].valor = valor;
         }else{
             this.#elementos.push({clave, valor});
         }
@@ -59,19 +66,13 @@ module.exports = class Lista {
 
     /* Borro un elemento a partir de una clave */
     eraseItem(key){
-        var item = -1;
-        this.#elementos.forEach(function(elemento, indice){
-            if (elemento.clave == key){
-               item = indice;
-            }
-        });
+        var item = this.find(key);
         if (item >= 0){
             this.#elementos.splice(item);
             return true;
         }else{
             return false;
         }
-        
     }
 
 };

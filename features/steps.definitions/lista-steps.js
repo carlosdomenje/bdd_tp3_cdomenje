@@ -8,6 +8,7 @@ let ctx = {};
 let listCount;
 let valor;
 
+
 Given('una lista vacia', function () {
     ctx.lista = new Lista();
 });
@@ -39,15 +40,14 @@ When('se agrega el elemento con clave {string} y valor {int}', function (clave, 
 });
 
 When('se realiza una busqueda por su clave {string}', function (clave) {
-    valor = ctx.lista.findByKey(clave);
+    valor = ctx.lista.getValue(clave);
 });
 
 Then('su valor es igual a {int}', function (value) {
     expect(valor).to.equal(value);
 });
 
-
- When('se agregan 4 elementos', function (dataTable) {
+When('se agregan {int} elementos', function (int, dataTable) {
     let elementos = dataTable.rows();
     elementos.forEach(function(item){
         ctx.lista.add(item[0], item[1]);
@@ -58,9 +58,12 @@ When('se recupera la lista de claves', function () {
     ctx.lista = ctx.lista.sortedList();
 });
 
-Then('la lista de claves esta ordenada', function () {
-    let listOrder = ['a_prueba4','prueba','prueba2','prueba3'];
-    assert.deepEqual(ctx.lista,listOrder)
+Then('la lista de claves esta ordenada', function (dataTable) {
+    let keys = [];
+    dataTable.rows().forEach((key)=>{
+        keys.push(key[0])
+    })
+    assert.deepEqual(ctx.lista,keys)
 });
 
 /* Steps de Busqueda.feature */
@@ -75,17 +78,20 @@ Given('una lista con {int} elementos', function (i, dataTable) {
 });
 
 When('la clave {string} ya existe la lista', function (clave) {
-    assert.isNotNaN(ctx.lista.findByKey(clave))
+    assert.isNotNull(ctx.lista.getValue(clave))
 });
 
 
 Then('se actualiza el valor del elemento a {string}, {int}', function (clave, valor) {
-    expect(valor).to.equal(ctx.lista.findByKey(clave));
+    expect(valor).to.equal(ctx.lista.getValue(clave));
 });
 
-Then('se retorna la lista de claves ordenada', function () {
-    let listOrder = ['alComienzo','prueba','prueba2','prueba3','prueba4','prueba5'];
-    assert.deepEqual(ctx.lista.sortedList(),listOrder);
+Then('se retorna la lista de claves ordenada', function (dataTable) {
+    let keys = [];
+    dataTable.rows().forEach((key)=>{
+        keys.push(key[0])
+    })
+    assert.deepEqual(ctx.lista.sortedList(),keys)
 });
 
 When('se borra el elemento con clave {string}', function (clave) {
@@ -95,5 +101,5 @@ When('se borra el elemento con clave {string}', function (clave) {
 
 
 Then('la clave {string} no se encuentra en la lista', function (clave) {
-    assert.isUndefined(ctx.lista.findByKey(clave))
+    assert.isUndefined(ctx.lista.getValue(clave))
 });

@@ -37,6 +37,13 @@ Escenario: Agregar un elemento y devolver una lista de claves ordenada
     | prueba5 | 5 |
     Cuando se agrega el elemento con clave 'alComienzo' y valor 10
     Entonces se retorna la lista de claves ordenada
+    | clave |
+    | alComienzo |
+    | prueba | 
+    | prueba2 |
+    | prueba3 |
+    | prueba4 |
+    | prueba5 |
 
 Escenario: Borrar un elemento de la lista
     Dado una lista con 4 elementos

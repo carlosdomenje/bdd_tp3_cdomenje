@@ -46,4 +46,10 @@ Escenario: Agregrar varios elementos a una lista vacia
     | a_prueba4 | 4 |
     Y se recupera la lista de claves
     Entonces la lista de claves esta ordenada
+    | claves | 
+    | a_prueba4 |
+    | prueba |
+    | prueba2 |
+    | prueba3 |
+    
 
